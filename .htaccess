@@ -1,0 +1,8 @@
+rewrite {
+    enable                  1
+    autoLoadHtaccess        1
+}
+
+rewriteCond %{REQUEST_FILENAME} !-f
+rewriteCond %{REQUEST_FILENAME} !-d
+rewriteRule .* /index.html [L]
