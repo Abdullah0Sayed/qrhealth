@@ -1,0 +1,316 @@
+{
+    "app_name": "Cure Health",
+    "global": {
+        "error_happen_resource": "An Error Happen During Load Page Resources , Don't Worry We're Working To Fix It As Soon As",
+        "submit_loading": "Loading...",
+        "back_to_home": "Back To Home",
+        "path_not_found": "The link you are trying to access does not exist or may have been removed or changed.",
+        "page_not_found": "Page Not Found",
+        "error": "an ERROR Happen",
+        "load_all": "Show All",
+        "download_qr_health_app_today": {
+            "title": "Download QR Digital Health App Today!",
+            "description": "Don't waste your time! Download the QR Digital Health app now to start booking and managing your appointments, chatting with your doctor, and reviewing your medical records بسهولة وأمان."
+        },
+        "email": "Email",
+        "whatsapp": "WhatsApp Number",
+        "confirm": "Confirm",
+        "langs": {
+            "ar": "Arabic",
+            "en": "English"
+        },
+        "doctor_title": "Dr / ",
+        "loading": "Loading data...",
+        "download_app_from_google_play": "Download from Google Play",
+        "download_app_from_app_store": "Download from App Store"
+    },
+    "pages": {
+        "home": {
+            "title": "Home",
+            "happy_patients": "Happy Patients",
+            "banner": {
+                "title": "Smarter, Faster, and Closer Healthcare",
+                "description": "With QR Digital Health, you can access trusted medical consultations and integrated digital health services easily, anytime and anywhere."
+            },
+            "specialists": {
+                "title": "Specialties"
+            },
+            "doctors": {
+                "title": "Our Doctors",
+                "description": "At QR Digital Clinic, we are committed to providing high-quality healthcare through a team of licensed and qualified doctors."
+            },
+            "faqs": {
+                "title": "FAQs",
+                "description": "Get your answer",
+                "list": {
+                    "q1": {
+                        "question": "What is QR Digital Clinic?",
+                        "answer": "QR Digital Clinic is a licensed telemedicine clinic that connects you with doctors online. Its mission is to make healthcare more accessible, flexible, and reliable from your home."
+                    },
+                    "q2": {
+                        "question": "What specialties are currently available?",
+                        "answer": "Current specialties include: Internal Medicine, Family Medicine, Geriatrics, and Palliative Care. Coming soon: Endocrinology, Gastroenterology, Rheumatology, Oncology, Nephrology, Urology, Cardiology, Psychiatry, Pediatrics, Obstetrics & Gynecology, ENT, and General Surgery."
+                    },
+                    "q3": {
+                        "question": "How do I book a digital visit?",
+                        "answer": "Booking is easy:",
+                        "list": {
+                            "1": "Visit our website or app.",
+                            "2": "Choose the specialty and doctor.",
+                            "3": "Select a suitable time and confirm your booking."
+                        },
+                        "hint": "You will receive a confirmation message with appointment details."
+                    },
+                    "q4": {
+                        "question": "How do I prepare for my online appointment?",
+                        "list": {
+                            "1": "Make sure your phone or computer is charged.",
+                            "2": "Prepare your medical history, medications, and test results.",
+                            "3": "Choose a quiet and well-lit place for the consultation."
+                        }
+                    },
+                    "q5": {
+                        "question": "Can I get prescriptions through QR Digital Clinic?",
+                        "answer": "Yes, after the consultation, the doctor can issue an electronic prescription that you can use at a nearby pharmacy."
+                    },
+                    "q6": {
+                        "question": "Are my medical records secure?",
+                        "answer": "Absolutely. Your data is encrypted and stored securely وفقًا للوائح وزارة الصحة السعودية ومعاييرها. Privacy and confidentiality are our top priorities."
+                    },
+                    "q7": {
+                        "question": "What other services does QR Digital Health offer?",
+                        "answer": "In addition to medical consultations, we offer:",
+                        "list": {
+                            "1": "Comprehensive health packages.",
+                            "2": "Home testing with result interpretation.",
+                            "3": "Continuous follow-up and digital care."
+                        }
+                    },
+                    "q8": {
+                        "question": "Can elderly patients use the digital clinic?",
+                        "answer": "Yes, QR Digital Clinic is specifically designed to meet the needs of elderly patients. Our geriatric and palliative care doctors are trained to provide personalized and compassionate care."
+                    },
+                    "q9": {
+                        "question": "What if I need emergency care?",
+                        "answer": "QR Digital Clinic is not for emergencies. If you experience severe chest pain, difficulty breathing, heavy bleeding, or any life-threatening symptoms, please contact emergency services immediately."
+                    },
+                    "q10": {
+                        "question": "How much does a consultation cost?",
+                        "answer": "Our consultation fees are affordable and displayed before booking confirmation. Packages and follow-up services are also available."
+                    }
+                }
+            }
+        },
+        "about_us": {
+            "title": "About Us",
+            "banner": {
+                "title": "We Redefine Digital Healthcare",
+                "description": "At QR Digital Health, we combine technology and medical expertise to deliver a smart, easy, and secure healthcare experience for everyone."
+            },
+            "hero_section": {
+                "title": "QR Digital Clinic",
+                "hint1": "At QR Digital Clinic, we believe healthcare should be accessible, effective, and patient-centered. Based on this belief, we established a leading virtual healthcare platform aimed at delivering high-quality care that improves quality of life and reduces unnecessary hospital visits.",
+                "hint2": "Our platform combines the latest medical technologies with a specialized team of doctors and consultants to provide seamless and comprehensive digital care across all specialties and life stages. We always strive to be your trusted partner in your healthcare journey."
+            },
+            "cards": {
+                "values": {
+                    "title": "Values",
+                    "description": "We place the patient at the center of our care and strive to provide a personalized, comfortable, and seamless healthcare experience."
+                },
+                "vision": {
+                    "title": "Vision",
+                    "description": "To be the leading comprehensive virtual healthcare platform in Saudi Arabia and the region."
+                },
+                "message": {
+                    "title": "Mission",
+                    "description": "Providing accessible, high-quality, patient-centered virtual healthcare that improves quality of life and health outcomes."
+                }
+            }
+        },
+        "doctors": {
+            "title": "Doctors",
+            "banner": {
+                "title": "Top Doctors at Your Service",
+                "description": "Connect with qualified doctors across various specialties anytime and anywhere."
+            },
+            "show_doctor_details": "View Profile",
+            "profile": {
+                "about_doctor": "About Dr /",
+                "links": {
+                    "info": "Info",
+                    "areas_of_expertise": "Areas of Expertise",
+                    "academic_qualifications": "Academic Qualifications",
+                    "age_group": "Age Group"
+                }
+            }
+        },
+        "services": {
+            "title": "Services",
+            "banner": {
+                "title": "Integrated Digital Healthcare Services",
+                "description": "We offer a range of digital medical solutions designed to simplify your healthcare journey."
+            },
+            "list_titles": {
+                "health_packages": "Health Packages",
+                "internal_medicine": "Internal Medicine",
+                "family_medicine": "Family Medicine",
+                "geriatrics": "Geriatrics",
+                "palliative_care": "Palliative Care",
+                "home_tests": "Home Testing & Lab Results Interpretation"
+            }
+        },
+        "blog": {
+            "title": "Blog",
+            "banner": {
+                "title": "Health Content That Matters",
+                "description": "Discover trusted medical articles and tips to help you understand your health."
+            },
+            "read_more": "Read More",
+            "details": {
+                "leave_comment": "Your email address will not be published. Required fields are marked *",
+                "fields": {
+                    "name": {
+                        "label": "Name",
+                        "placeholder": "Name*",
+                        "validations": {
+                            "required": "Name is required"
+                        }
+                    },
+                    "website": {
+                        "label": "Website",
+                        "placeholder": "Website",
+                        "validations": {
+                            "required": "Website is required"
+                        }
+                    },
+                    "email": {
+                        "label": "Email",
+                        "placeholder": "Email",
+                        "validations": {
+                            "required": "Email is required"
+                        }
+                    },
+                    "comment": {
+                        "label": "Comment",
+                        "placeholder": "Enter your comment here...",
+                        "validations": {
+                            "required": "Please leave a comment"
+                        }
+                    }
+                },
+                "leave_comment_btn": "Post Comment"
+            }
+        },
+        "contact_us": {
+            "title": "Contact Us",
+            "banner": {
+                "title": "We’re Here to Help",
+                "description": "Reach out to us for any inquiries or support."
+            },
+            "hero_section": {
+                "heading": "Contact Us Now",
+                "hint1": "We are here to help and answer your questions.",
+                "hint2": "We will be happy to respond as soon as possible."
+            },
+            "form_section": {
+                "heading": "Contact Us",
+                "title": "Contact Details",
+                "fields": {
+                    "first_name": {
+                        "label": "First Name",
+                        "placeholder": "First Name",
+                        "validations": {
+                            "required": "First name is required"
+                        }
+                    },
+                    "last_name": {
+                        "label": "Last Name",
+                        "placeholder": "Last Name",
+                        "validations": {
+                            "required": "Last name is required"
+                        }
+                    },
+                    "phone": {
+                        "label": "Phone Number",
+                        "placeholder": "Phone Number",
+                        "validations": {
+                            "required": "Phone number is required",
+                            "pattern": "Phone Format Invalid",
+                            "minLength": "Phone Number Must be Consist of {{min}} Numbers Only"
+                        }
+                    },
+                    "email": {
+                        "label": "Email",
+                        "placeholder": "Email",
+                        "validations": {
+                            "required": "Email is required"
+                        }
+                    },
+                    "message": {
+                        "label": "Message",
+                        "placeholder": "Message",
+                        "validations": {
+                            "required": "Please enter your message"
+                        }
+                    }
+                }
+            }
+        },
+        "privacy": {
+            "title": "Privacy Policy"
+        },
+        "terms_of_use": {
+            "title": "Terms of Use"
+        }
+    },
+    "navbar": {
+        "home": "Home",
+        "about_us": "About Us",
+        "doctors": "Doctors",
+        "services": "Services",
+        "blog": "Blog",
+        "contact_us": "Contact Us",
+        "btns": {
+            "doctor_login": "Doctor Login",
+            "doctor_register": "Doctor Registration"
+        }
+    },
+    "footer": {
+        "links": {
+            "company": {
+                "title": "Company",
+                "about_us": "About QR Digital Health",
+                "contact_us": "Contact Us",
+                "blogs": "Blog"
+            },
+            "services": {
+                "title": "Services",
+                "internal_medicine": "Internal Medicine",
+                "family_medicine": "Family Medicine",
+                "geriatrics": "Geriatrics",
+                "palliative_care": "Palliative Care"
+            },
+            "legal": {
+                "title": "Legal",
+                "terms_of_use": "Terms of Use",
+                "privacy_policy": "Privacy Policy"
+            },
+            "request_our_services": {
+                "title": "Request Our Services",
+                "download_app": "Download App"
+            },
+            "contact_us": {
+                "title": "Contact Us"
+            },
+            "follow_us": {
+                "title": "Follow Us"
+            }
+        },
+        "logo_section": {
+            "description": "Remote medical consultations with top doctors you can trust."
+        },
+        "copyrights_section": {
+            "description": "© {{year}} QR Health. All rights reserved."
+        }
+    }
+}
