@@ -8,6 +8,8 @@
         "page_not_found": "Page Not Found",
         "error": "an ERROR Happen",
         "load_all": "Show All",
+        "show_file": "Show File",
+        "not_found_file": "Not Founded Any Information",
         "download_qr_health_app_today": {
             "title": "Download QR Digital Health App Today!",
             "description": "Don't waste your time! Download the QR Digital Health app now to start booking and managing your appointments, chatting with your doctor, and reviewing your medical records بسهولة وأمان."

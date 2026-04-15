@@ -6,6 +6,7 @@ import useDoctors from "../../hooks/doctors/useDoctors";
 import { doctorService } from "../../services/doctor/doctorService";
 import Loading from "../../components/ui/Loading";
 import PageTitle from "../../components/ui/PageTitle";
+import { BsDownload } from "react-icons/bs";
 
 const Profile = () => {
   const { id } = useParams();
@@ -14,24 +15,7 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
-  const [profileInfoLists, setProfileInfoLists] = useState([
-    {
-      title: t("pages.doctors.profile.links.info"),
-      content: <div>{doctor?.bio}</div>,
-    },
-    {
-      title: t("pages.doctors.profile.links.areas_of_expertise"),
-      content: <div>{doctor?.specialization_certificate_file}</div>,
-    },
-    {
-      title: t("pages.doctors.profile.links.academic_qualifications"),
-      content: <div>{doctor?.bachelor_certificate_file}</div>,
-    },
-    {
-      title: t("pages.doctors.profile.links.age_group"),
-      content: <div>{doctor?.bachelor_certificate_file}</div>,
-    },
-  ]);
+
   const fetchDoctorById = async () => {
     setLoading(true);
     try {
@@ -49,6 +33,49 @@ const Profile = () => {
       fetchDoctorById();
     }
   }, [id]);
+
+  const profileInfoLists = [
+    {
+      title: t("pages.doctors.profile.links.info"),
+      content: <div>{doctor?.bio}</div>,
+    },
+    {
+      title: t("pages.doctors.profile.links.areas_of_expertise"),
+      content: doctor?.specialization_certificate_file ? (
+        <button
+          className={`px-4 py-2 bg-primary-color text-white rounded-2xl flex items-center justify-center gap-2`}
+          onClick={() => {
+            window.open(doctor?.specialization_certificate_file, "_blank");
+          }}
+        >
+          <BsDownload />
+          {t("global.show_file")}
+        </button>
+      ) : (
+        <div>{t("global.not_found_file")}</div>
+      ),
+    },
+    {
+      title: t("pages.doctors.profile.links.academic_qualifications"),
+      content: doctor?.bachelor_certificate_file ? (
+        <button
+          className={`px-4 py-2 bg-primary-color text-white rounded-2xl flex items-center justify-center gap-2`}
+          onClick={() => {
+            window.open(doctor?.bachelor_certificate_file, "_blank");
+          }}
+        >
+          <BsDownload />
+          {t("global.show_file")}
+        </button>
+      ) : (
+        <div>{t("global.not_found_file")}</div>
+      ),
+    },
+    // {
+    //   title: t("pages.doctors.profile.links.age_group"),
+    //   content: <div>{doctor?.bachelor_certificate_file}</div>,
+    // },
+  ];
 
   if (loading) {
     return (
@@ -108,7 +135,7 @@ const Profile = () => {
                   ))}
                 </div>
                 {/* Content */}
-                <div className={`border border-gray-100 p-4`}>
+                <div className={`border text-black border-gray-100 p-4`}>
                   {profileInfoLists[activeIndex].content}
                 </div>
               </div>
