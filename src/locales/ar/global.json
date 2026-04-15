@@ -9,6 +9,8 @@
         "error": "حدث خطا ما",
         "load_all": "عرض الكل",
         "show_file": "عرض الملف",
+        "bachelor_certificate_file": "عرض المؤهلات العلمية",
+        "specialization_certificate_file": "شهادة التخصص",
         "not_found_file": "لا يوجد بيانات مسجلة",
         "download_qr_health_app_today": {
             "title": "حمّل تطبيق كيور الرقمية اليوم!",
@@ -138,6 +140,7 @@
             "show_doctor_details": "عرض الملف الشخصي",
             "profile": {
                 "about_doctor": "عن د /",
+                "calc_age": "يبلغ من العمر {{age}} عام",
                 "links": {
                     "info": "نبذة",
                     "areas_of_expertise": "مجالات الخبرة",

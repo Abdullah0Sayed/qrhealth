@@ -9,6 +9,8 @@
         "error": "an ERROR Happen",
         "load_all": "Show All",
         "show_file": "Show File",
+        "bachelor_certificate_file": "View Academic Qualifications",
+        "specialization_certificate_file": "Specialization Certificate",
         "not_found_file": "Not Founded Any Information",
         "download_qr_health_app_today": {
             "title": "Download QR Digital Health App Today!",
@@ -138,6 +140,7 @@
             "show_doctor_details": "View Profile",
             "profile": {
                 "about_doctor": "About Dr /",
+                "calc_age": "Age: {{age}} years",
                 "links": {
                     "info": "Info",
                     "areas_of_expertise": "Areas of Expertise",
