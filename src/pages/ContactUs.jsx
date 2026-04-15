@@ -8,7 +8,6 @@ import { FaPhone } from "react-icons/fa6";
 import { PlaceholderDollar } from "lineicons-react";
 import Form from "../components/form/Form";
 import { contactUsService } from "../services/contactus/contactUsService";
-import { data } from "react-router-dom";
 import PageTitle from "../components/ui/PageTitle";
 import toast from "react-hot-toast";
 

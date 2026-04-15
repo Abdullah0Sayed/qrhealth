@@ -1,82 +1,107 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import { lazy, Suspense } from "react";
+
 import Layout from "../pages/Layout";
-import Home from "../pages/Home";
-import AboutUs from "../pages/AboutUs";
-import ContactUs from "../pages/ContactUs";
-import Services from "../pages/Services";
-import Doctors from "../pages/doctors/Doctors";
-import Profile from "../pages/doctors/Profile";
-import Blog from "../pages/Blog/Blog";
-import PostDetails from "../pages/Blog/PostDetails";
-import PrivacyPolicy from "../pages/setting/PrivacyPolicy";
-import TermsOfUse from "../pages/setting/TermsOfUse";
 import NotFoundResource from "../components/ui/NotFoundResource";
 import ErrorPage from "../components/ui/ErrorPage";
+import Loading from "../components/ui/Loading";
+
+/** Lazy Pages */
+const Home = lazy(() => import("../pages/Home"));
+const AboutUs = lazy(() => import("../pages/AboutUs"));
+const ContactUs = lazy(() => import("../pages/ContactUs"));
+const Services = lazy(() => import("../pages/Services"));
+
+const Doctors = lazy(() => import("../pages/doctors/Doctors"));
+const Profile = lazy(() => import("../pages/doctors/Profile"));
+
+const Blog = lazy(() => import("../pages/Blog/Blog"));
+const PostDetails = lazy(() => import("../pages/Blog/PostDetails"));
+
+const PrivacyPolicy = lazy(() => import("../pages/setting/PrivacyPolicy"));
+const TermsOfUse = lazy(() => import("../pages/setting/TermsOfUse"));
+
+/** Shared Suspense Wrapper */
+const withSuspense = (Component) => (
+  <Suspense
+    fallback={
+      <div className={`min-h-screen`}>
+        <Loading />
+      </div>
+    }
+  >
+    <Component />
+  </Suspense>
+);
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to={``} replace />,
+    element: <Navigate to="/" replace />,
   },
+
   {
-    path: "*",
-    element: <NotFoundResource />,
-  },
-  {
-    path: "",
+    path: "/",
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
         index: true,
-        element: <Home />,
+        element: withSuspense(Home),
       },
       {
         path: "about-us",
-        element: <AboutUs />,
+        element: withSuspense(AboutUs),
       },
       {
         path: "contact-us",
-        element: <ContactUs />,
+        element: withSuspense(ContactUs),
       },
+      {
+        path: "services",
+        element: withSuspense(Services),
+      },
+      {
+        path: "privacy-policy",
+        element: withSuspense(PrivacyPolicy),
+      },
+      {
+        path: "terms-of-use",
+        element: withSuspense(TermsOfUse),
+      },
+
       {
         path: "blogs",
         children: [
           {
             index: true,
-            element: <Blog />,
+            element: withSuspense(Blog),
           },
           {
             path: ":id",
-            element: <PostDetails />,
+            element: withSuspense(PostDetails),
           },
         ],
       },
+
       {
         path: "doctors",
         children: [
           {
             index: true,
-            element: <Doctors />,
+            element: withSuspense(Doctors),
           },
           {
             path: ":id",
-            element: <Profile />,
+            element: withSuspense(Profile),
           },
         ],
       },
-      {
-        path: "services",
-        element: <Services />,
-      },
-      {
-        path: "privacy-policy",
-        element: <PrivacyPolicy />,
-      },
-      {
-        path: "terms-of-use",
-        element: <TermsOfUse />,
-      },
     ],
+  },
+
+  {
+    path: "*",
+    element: <NotFoundResource />,
   },
 ]);
