@@ -31,6 +31,7 @@
     "pages": {
         "home": {
             "title": "Home",
+            "meta_description": "QR Digital Health delivers smarter and faster digital healthcare, offering trusted medical consultations and integrated health services anytime, anywhere.",
             "happy_patients": "Happy Patients",
             "banner": {
                 "title": "Smarter, Faster, and Closer Healthcare",
@@ -107,6 +108,7 @@
         },
         "about_us": {
             "title": "About Us",
+            "meta_description": "Learn about QR Health, our mission and vision in delivering modern patient-centered digital healthcare services.",
             "banner": {
                 "title": "We Redefine Digital Healthcare",
                 "description": "At QR Digital Health, we combine technology and medical expertise to deliver a smart, easy, and secure healthcare experience for everyone."
@@ -133,12 +135,14 @@
         },
         "doctors": {
             "title": "Doctors",
+            "meta_description": "Browse QR Health specialists and get the best medical care from top healthcare experts.",
             "banner": {
                 "title": "Top Doctors at Your Service",
                 "description": "Connect with qualified doctors across various specialties anytime and anywhere."
             },
             "show_doctor_details": "View Profile",
             "profile": {
+                "meta_description": "View doctor profile, specialization, experience, and book a consultation easily via QR Health.",
                 "about_doctor": "About Dr /",
                 "calc_age": "Age: {{age}} years",
                 "links": {
@@ -151,6 +155,7 @@
         },
         "services": {
             "title": "Services",
+            "meta_description": "We provide integrated digital healthcare services including medical consultations, follow-ups, and specialized remote care.",
             "banner": {
                 "title": "Integrated Digital Healthcare Services",
                 "description": "We offer a range of digital medical solutions designed to simplify your healthcare journey."
@@ -166,12 +171,14 @@
         },
         "blog": {
             "title": "Blog",
+            "meta_description": "Read the latest medical articles and health tips from QR Health experts to improve your lifestyle.",
             "banner": {
                 "title": "Health Content That Matters",
                 "description": "Discover trusted medical articles and tips to help you understand your health."
             },
             "read_more": "Read More",
             "details": {
+                "meta_description": "Read this detailed medical article and discover trusted health insights from QR Health experts.",
                 "leave_comment": "Your email address will not be published. Required fields are marked *",
                 "fields": {
                     "name": {
@@ -208,6 +215,7 @@
         },
         "contact_us": {
             "title": "Contact Us",
+            "meta_description": "Contact QR Health team for support, inquiries, or easy access to our medical services.",
             "banner": {
                 "title": "We’re Here to Help",
                 "description": "Reach out to us for any inquiries or support."
@@ -262,10 +270,12 @@
             }
         },
         "privacy": {
-            "title": "Privacy Policy"
+            "title": "Privacy Policy",
+            "meta_description": "Learn about QR Health privacy policy and how we protect user data and ensure security."
         },
         "terms_of_use": {
-            "title": "Terms of Use"
+            "title": "Terms of Use",
+            "meta_description": "Read QR Health terms of use governing access and usage of our digital healthcare services."
         }
     },
     "navbar": {

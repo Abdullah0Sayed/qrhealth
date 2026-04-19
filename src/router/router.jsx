@@ -6,26 +6,26 @@ import NotFoundResource from "../components/ui/NotFoundResource";
 import ErrorPage from "../components/ui/ErrorPage";
 import Loading from "../components/ui/Loading";
 
+import PageResolver from "../pages/PageResolver";
+
 /** Lazy Pages */
 const Home = lazy(() => import("../pages/Home"));
 const AboutUs = lazy(() => import("../pages/AboutUs"));
 const ContactUs = lazy(() => import("../pages/ContactUs"));
 const Services = lazy(() => import("../pages/Services"));
-
-const Doctors = lazy(() => import("../pages/doctors/Doctors"));
-const Profile = lazy(() => import("../pages/doctors/Profile"));
+const PrivacyPolicy = lazy(() => import("../pages/setting/PrivacyPolicy"));
+const TermsOfUse = lazy(() => import("../pages/setting/TermsOfUse"));
 
 const Blog = lazy(() => import("../pages/Blog/Blog"));
 const PostDetails = lazy(() => import("../pages/Blog/PostDetails"));
 
-const PrivacyPolicy = lazy(() => import("../pages/setting/PrivacyPolicy"));
-const TermsOfUse = lazy(() => import("../pages/setting/TermsOfUse"));
+const Doctors = lazy(() => import("../pages/doctors/Doctors"));
+const Profile = lazy(() => import("../pages/doctors/Profile"));
 
-/** Shared Suspense Wrapper */
 const withSuspense = (Component) => (
   <Suspense
     fallback={
-      <div className={`min-h-screen`}>
+      <div className="min-h-screen">
         <Loading />
       </div>
     }
@@ -37,18 +37,22 @@ const withSuspense = (Component) => (
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/" replace />,
+    element: <Navigate to="/ar" replace />,
   },
 
   {
-    path: "/",
+    path: "/:lang",
     element: <Layout />,
     errorElement: <ErrorPage />,
+
     children: [
+      /** 🟢 HOME */
       {
         index: true,
         element: withSuspense(Home),
       },
+
+      /** 🟢 STATIC PAGES (SEO SAFE) */
       {
         path: "about-us",
         element: withSuspense(AboutUs),
@@ -70,6 +74,7 @@ export const router = createBrowserRouter([
         element: withSuspense(TermsOfUse),
       },
 
+      /** 🟡 BLOGS */
       {
         path: "blogs",
         children: [
@@ -84,6 +89,7 @@ export const router = createBrowserRouter([
         ],
       },
 
+      /** 🟡 DOCTORS */
       {
         path: "doctors",
         children: [
@@ -96,6 +102,12 @@ export const router = createBrowserRouter([
             element: withSuspense(Profile),
           },
         ],
+      },
+
+      /** 🔵 DYNAMIC SEO FALLBACK (LAST ONLY) */
+      {
+        path: ":page",
+        element: <PageResolver />,
       },
     ],
   },

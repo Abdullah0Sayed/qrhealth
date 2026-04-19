@@ -3,14 +3,22 @@ import usePrivacyPolicy from "../../hooks/policy/usePrivacyPolicy";
 import Container from "../../components/ui/Container";
 import PageTitle from "../../components/ui/PageTitle";
 import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
+import HreflangTags from "../../components/seo/HreflangTags";
 
 const PrivacyPolicy = () => {
   const { privacyPolicy, termsOfUse, loading, error, refetchPolicies } =
     usePrivacyPolicy();
   const { t } = useTranslation("global");
+  const { lang } = useParams();
   return (
     <div className={`w-full flex flex-col gap-4 my-8`}>
-      <PageTitle pageName={t("app_name") + "- " + t("pages.privacy.title")} />
+      <PageTitle
+        pageName={t("app_name") + " | " + t("pages.privacy.title")}
+        metaContentDescription={t("pages.privacy.meta_description")}
+      />
+
+      <HreflangTags path="/privacy-policy" lang={lang} />
 
       <Container>
         <div className={`w-full flex flex-col gap-8`}>

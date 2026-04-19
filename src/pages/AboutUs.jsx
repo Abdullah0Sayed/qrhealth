@@ -5,14 +5,21 @@ import Container from "../components/ui/Container";
 import { FaUserDoctor } from "react-icons/fa6";
 import { FaStethoscope } from "react-icons/fa";
 import { FaRegHospital } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PageTitle from "../components/ui/PageTitle";
+import HreflangTags from "../components/seo/HreflangTags";
 
 const AboutUs = () => {
   const { t } = useTranslation("global");
+  const { lang } = useParams();
   return (
     <div className={`w-full flex flex-col gap-8 `}>
-      <PageTitle pageName={t("app_name") + "- " + t("pages.about_us.title")} />
+      <PageTitle
+        pageName={t("app_name") + " | " + t("pages.about_us.title")}
+        metaContentDescription={t("pages.about_us.meta_description")}
+      />
+
+      <HreflangTags path="/about-us" lang={lang} />
 
       <BannerSection
         title={t("pages.about_us.banner.title")}

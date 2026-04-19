@@ -1,18 +1,24 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BannerSection from "../../components/ui/BannerSection";
 import Container from "../../components/ui/Container";
 import useBlogs from "../../hooks/blog/useBlogs";
 import PageTitle from "../../components/ui/PageTitle";
+import HreflangTags from "../../components/seo/HreflangTags";
 
 const Blog = () => {
   const { t } = useTranslation("global");
   const { blogs } = useBlogs();
-
+  const { lang } = useParams();
   return (
     <div className={`w-full flex flex-col`}>
-      <PageTitle pageName={t("app_name") + "- " + t("pages.blog.title")} />
+      <PageTitle
+        pageName={t("app_name") + " | " + t("pages.blog.title")}
+        metaContentDescription={t("pages.blog.meta_description")}
+      />
+
+      <HreflangTags path="/blogs" lang={lang} />
 
       <BannerSection
         title={t("pages.blog.banner.title")}

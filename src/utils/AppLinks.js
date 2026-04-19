@@ -1,26 +1,50 @@
 export const AppLinks = [
   {
-    path: "",
+    key: "home",
     title: "navbar.home",
+    path: {
+      ar: "",
+      en: "",
+    },
   },
   {
-    path: "about-us",
+    key: "about",
     title: "navbar.about_us",
+    path: {
+      ar: "about-us",
+      en: "about-us",
+    },
   },
   {
-    path: "doctors",
-    title: "navbar.doctors",
-  },
-  {
-    path: "services",
+    key: "services",
     title: "navbar.services",
+    path: {
+      ar: "services",
+      en: "services",
+    },
   },
   {
-    path: "blogs",
+    key: "blogs",
     title: "navbar.blog",
+    path: {
+      ar: "blogs",
+      en: "blogs",
+    },
   },
   {
-    path: "contact-us",
+    key: "doctors",
+    title: "navbar.doctors",
+    path: {
+      ar: "doctors",
+      en: "doctors",
+    },
+  },
+  {
+    key: "contact-us",
     title: "navbar.contact_us",
+    path: {
+      ar: "contact-us",
+      en: "contact-us",
+    },
   },
 ];

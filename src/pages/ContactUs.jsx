@@ -10,9 +10,12 @@ import Form from "../components/form/Form";
 import { contactUsService } from "../services/contactus/contactUsService";
 import PageTitle from "../components/ui/PageTitle";
 import toast from "react-hot-toast";
+import { useParams } from "react-router-dom";
+import HreflangTags from "../components/seo/HreflangTags";
 
 const ContactUs = () => {
   const { t } = useTranslation("global");
+  const { lang } = useParams();
   const fields = useMemo(
     () => [
       {
@@ -120,8 +123,11 @@ const ContactUs = () => {
   return (
     <div className={`w-full flex flex-col`}>
       <PageTitle
-        pageName={t("app_name") + "- " + t("pages.contact_us.title")}
+        pageName={t("app_name") + " | " + t("pages.contact_us.title")}
+        metaContentDescription={t("pages.contact_us.meta_description")}
       />
+
+      <HreflangTags path="/contact-us" lang={lang} />
 
       {/* Banner */}
       <BannerSection

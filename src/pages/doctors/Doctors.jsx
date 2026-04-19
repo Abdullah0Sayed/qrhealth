@@ -1,27 +1,28 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useDoctors from "../../hooks/doctors/useDoctors";
 import BannerSection from "../../components/ui/BannerSection";
 import Container from "../../components/ui/Container";
 import Loading from "../../components/ui/Loading";
 import PageTitle from "../../components/ui/PageTitle";
+import HreflangTags from "../../components/seo/HreflangTags";
 
 const Doctors = () => {
   const { t } = useTranslation("global");
   const { doctors, loading } = useDoctors();
-  if (loading) {
-    return (
-      <div
-        className={`w-full min-h-screen flex justify-center items-center py-20`}
-      >
-        <Loading />
-      </div>
-    );
-  }
+  const { lang } = useParams();
+  // if (loading) {
+  //   return <Loading />;
+  // }
   return (
     <div className={`w-full flex flex-col gap-8`}>
-      <PageTitle pageName={t("app_name") + "- " + t("pages.doctors.title")} />
+      <PageTitle
+        pageName={t("app_name") + " | " + t("pages.doctors.title")}
+        metaContentDescription={t("pages.doctors.meta_description")}
+      />
+
+      <HreflangTags path="/doctors" lang={lang} />
 
       {/* Banner */}
       <BannerSection
@@ -62,7 +63,7 @@ const Doctors = () => {
                 </div>
                 <div className={`flex text-wrap flex-wrap w-full `}>
                   <span className={`text-2xl font-bold text-black/80`}>
-                    {`${t("global.doctor_title")} ${doctor.name}`}
+                    {`${t("global.doctor_title")} ${lang === "ar" ? doctor.name : doctor?.name_en || doctor?.name}`}
                   </span>
                 </div>
                 <div className={`w-full grow-0`}>

@@ -10,11 +10,13 @@ import Form from "../../components/form/Form";
 import PageTitle from "../../components/ui/PageTitle";
 import Loading from "../../components/ui/Loading";
 import { useSelector } from "react-redux";
+import HreflangTags from "../../components/seo/HreflangTags";
 
 const PostDetails = () => {
   const { id } = useParams();
   const { t } = useTranslation("global");
-  const lang = useSelector((state) => state.webLanguage);
+  // const lang = useSelector((state) => state.webLanguage);
+  const { lang } = useParams();
   const [post, setPost] = useState(null);
   const [postImage, setPostImage] = useState(null);
 
@@ -105,7 +107,11 @@ const PostDetails = () => {
 
   return (
     <div className={`w-full flex flex-col my-4 p-4`}>
-      <PageTitle pageName={t("app_name") + "- " + post?.translation.title} />
+      <PageTitle
+        pageName={t("app_name") + " | " + post?.translation.title}
+        metaContentDescription={t("pages.blog.details.meta_description")}
+      />
+      <HreflangTags path={`/blogs/${id}`} lang={lang} />
 
       <div className={`w-full`}>
         <Container>

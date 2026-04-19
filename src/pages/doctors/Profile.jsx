@@ -8,6 +8,7 @@ import Loading from "../../components/ui/Loading";
 import PageTitle from "../../components/ui/PageTitle";
 import { BsDownload, BsFile, BsFileEarmarkPdf } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import HreflangTags from "../../components/seo/HreflangTags";
 
 const Profile = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
-  const lang = useSelector((state) => state.webLanguage);
+  const { lang } = useParams();
 
   const fetchDoctorById = async () => {
     setLoading(true);
@@ -39,7 +40,9 @@ const Profile = () => {
   const profileInfoLists = [
     {
       title: t("pages.doctors.profile.links.info"),
-      content: <div>{doctor?.bio}</div>,
+      content: (
+        <div>{lang === "ar" ? doctor?.bio : doctor?.bio_en || doctor?.bio}</div>
+      ),
     },
     {
       title: t("pages.doctors.profile.links.areas_of_expertise"),
@@ -113,7 +116,15 @@ const Profile = () => {
 
   return (
     <>
-      <PageTitle pageName={t("app_name") + "- " + doctor?.name} />
+      <PageTitle
+        pageName={
+          t("app_name") +
+          " | " +
+          `${lang === "ar" ? doctor?.name : doctor?.name_en || doctor?.name}`
+        }
+        metaContentDescription={t("pages.doctors.profile.meta_description")}
+      />
+      <HreflangTags path={`/doctors/${id}`} lang={lang} />
 
       <div className={`w-full flex flex-col my-8 `}>
         {/* Profile */}
@@ -126,7 +137,13 @@ const Profile = () => {
             >
               <div className={`flex flex-row justify-between`}>
                 <p className={`text-black font-bold`}>
-                  {t("pages.doctors.profile.about_doctor") + " " + doctor?.name}
+                  {t("pages.doctors.profile.about_doctor") +
+                    " " +
+                    `${
+                      +lang === "ar"
+                        ? doctor?.name
+                        : doctor?.name_en || doctor?.name
+                    }`}
                 </p>
                 {/* <div
                   className={`image-wrapper overflow-hidden w-96 h-96 border bg-gray-100`}

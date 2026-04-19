@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaGooglePlay } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Container from "../components/ui/Container";
 import { BsLungs, BsPlus } from "react-icons/bs";
 import { MdOutlineFamilyRestroom } from "react-icons/md";
@@ -14,11 +14,13 @@ import { faqList } from "../utils/FaqList";
 import AccordionItem from "../components/ui/pages/home/AccordionItem";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import PageTitle from "../components/ui/PageTitle";
+import HreflangTags from "../components/seo/HreflangTags";
 
 const Home = () => {
   const { t } = useTranslation("global");
   const { doctors } = useDoctors();
   const { blogs } = useBlogs();
+  const { lang } = useParams();
   // const [images, setImages] = useState({});
   const [patientCounter, setPatientCounter] = useState(95);
   const [activeAccordIndex, setActiveAccordIndex] = useState(null);
@@ -55,7 +57,12 @@ const Home = () => {
 
   return (
     <div className={`w-full flex flex-col gap-8`}>
-      <PageTitle pageName={t("app_name") + "- " + t("pages.home.title")} />
+      <PageTitle
+        pageName={t("app_name") + " | " + t("pages.home.title")}
+        metaContentDescription={t("pages.home.meta_description")}
+      />
+      <HreflangTags path="" lang={lang} />
+
       {/* Banner */}
       <div
         className={`w-full flex flex-col gap-4 items-center justify-center h-home-banner-height bg-fifth-color`}
@@ -179,7 +186,7 @@ const Home = () => {
                     </div>
                     <div className={`flex text-wrap flex-wrap w-full `}>
                       <span className={`text-2xl font-bold text-black/80`}>
-                        {`${t("global.doctor_title")} ${doctor.name}`}
+                        {`${t("global.doctor_title")} ${lang === "ar" ? doctor.name : doctor?.name_en || doctor?.name}`}
                       </span>
                     </div>
                     <div className={`w-full grow-0`}>

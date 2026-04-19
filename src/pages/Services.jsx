@@ -4,14 +4,21 @@ import { useTranslation } from "react-i18next";
 import Container from "../components/ui/Container";
 import { qrServices } from "../utils/QrServices";
 import ServiceCard from "../components/ui/pages/services/ServiceCard";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PageTitle from "../components/ui/PageTitle";
+import HreflangTags from "../components/seo/HreflangTags";
 
 const Services = () => {
   const { t } = useTranslation("global");
+  const { lang } = useParams();
   return (
     <div className={`w-full flex flex-col gap-4`}>
-      <PageTitle pageName={t("app_name") + "- " + t("pages.services.title")} />
+      <PageTitle
+        pageName={t("app_name") + " | " + t("pages.services.title")}
+        metaContentDescription={t("pages.services.meta_description")}
+      />
+      <HreflangTags path="/services" lang={lang} />
+
       {/* Banner */}
       <BannerSection
         title={t("pages.services.banner.title")}

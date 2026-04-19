@@ -1,11 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FooterLinks } from "../../utils/FooterLinks";
 import Container from "./Container";
 
 const Footer = () => {
   const { t } = useTranslation("global");
+  const { lang } = useParams();
   return (
     <div
       id={`footer`}
@@ -28,7 +29,7 @@ const Footer = () => {
                   childrenGroup.path ? (
                     <Link
                       key={i}
-                      to={childrenGroup.path}
+                      to={`/${lang}/${childrenGroup.path[lang]}`}
                       className={`text-white text-base`}
                     >
                       {t(childrenGroup.title)}

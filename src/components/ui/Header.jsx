@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { FaLinkedin, FaInstagram, FaPhoneFlip } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import { CgClose, CgMenu } from "react-icons/cg";
@@ -8,30 +8,34 @@ import { AppLinks } from "../../utils/AppLinks";
 import Container from "./Container";
 import { useDispatch, useSelector } from "react-redux";
 import { setWebLang } from "../../toolkit/features/lang/languageSlice";
+import { useChangeLanguage } from "../../hooks/lang/useChangeLanguage";
 
 const Header = () => {
   const { t } = useTranslation("global");
-  const lang = useSelector((state) => state.webLanguage);
+  // const lang = useSelector((state) => state.webLanguage);
+  const { lang } = useParams();
   const [isOpenSideBar, setIsOpenSideBar] = useState(false);
+  const navigate = useNavigate();
 
   // Header Scroll
   const [isScrolled, setIsScrolled] = useState(false);
   const dispatch = useDispatch();
 
+  const { changeLang } = useChangeLanguage();
+
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 1);
   };
 
-  const swipeLang = (lang) => {
-    dispatch(setWebLang(lang));
-  };
+  // const swipeLang = (lang) => {
+  //   dispatch(setWebLang(lang));
+  // };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // منع الاسكرول وقت فتح السايدبار
   useEffect(() => {
     document.body.style.overflow = isOpenSideBar ? "hidden" : "auto";
   }, [isOpenSideBar]);
@@ -108,7 +112,7 @@ const Header = () => {
             {/* Logo */}
             <Link
               className={`w-16 h-16 flex items-center justify-center`}
-              to={`/`}
+              to={`/${lang}`}
             >
               <img
                 src={`/uploads/qrLogo.png`}
@@ -124,7 +128,9 @@ const Header = () => {
               {AppLinks.map((link, index) => (
                 <NavLink
                   key={index}
-                  to={link.path}
+                  to={
+                    link.path[lang] ? `/${lang}/${link.path[lang]}` : `/${lang}`
+                  }
                   end
                   className={({ isActive }) =>
                     `${isActive ? "text-fifth-color font-medium" : ""} text-black text-sm hover:border hover:border-fifth-color hover:text-fifth-color hover:p-1 hover:rounded transition-all duration-200`
@@ -138,7 +144,7 @@ const Header = () => {
               {lang === "ar" ? (
                 <span
                   className={`flex flex-row items-center gap-2 text-sm cursor-pointer`}
-                  onClick={() => swipeLang("en")}
+                  onClick={() => changeLang("en")}
                 >
                   <img src={`/uploads/en.svg`} className={`w-4`} />
                   {t("global.langs.en")}
@@ -146,7 +152,7 @@ const Header = () => {
               ) : (
                 <span
                   className={`flex flex-row items-center gap-2 text-sm cursor-pointer`}
-                  onClick={() => swipeLang("ar")}
+                  onClick={() => changeLang("ar")}
                 >
                   <img src={`/uploads/ar.svg`} className={`w-4`} />
                   {t("global.langs.ar")}
@@ -179,7 +185,7 @@ const Header = () => {
               {lang === "ar" ? (
                 <span
                   className={`flex flex-row items-center gap-2 text-sm cursor-pointer`}
-                  onClick={() => swipeLang("en")}
+                  onClick={() => changeLang("en")}
                 >
                   <img src={`/uploads/en.svg`} className={`w-4`} />
                   {t("global.langs.en")}
@@ -187,7 +193,7 @@ const Header = () => {
               ) : (
                 <span
                   className={`flex flex-row items-center gap-2 text-sm cursor-pointer`}
-                  onClick={() => swipeLang("ar")}
+                  onClick={() => changeLang("ar")}
                 >
                   <img src={`/uploads/ar.svg`} className={`w-4`} />
                   {t("global.langs.ar")}

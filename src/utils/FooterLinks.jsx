@@ -43,11 +43,17 @@ export const FooterLinks = [
     title: "footer.links.legal.title",
     children: [
       {
-        path: "terms-of-use",
+        path: {
+          en: "terms-of-use",
+          ar: "terms-of-use",
+        },
         title: "footer.links.legal.terms_of_use",
       },
       {
-        path: "privacy-policy",
+        path: {
+          en: "privacy-policy",
+          ar: "privacy-policy",
+        },
         title: "footer.links.legal.privacy_policy",
       },
     ],
