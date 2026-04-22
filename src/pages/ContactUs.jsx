@@ -12,10 +12,12 @@ import PageTitle from "../components/ui/PageTitle";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import HreflangTags from "../components/seo/HreflangTags";
+import useSetting from "../hooks/setting/useSetting";
 
 const ContactUs = () => {
   const { t } = useTranslation("global");
   const { lang } = useParams();
+  const { loading, error, information } = useSetting();
   const fields = useMemo(
     () => [
       {
@@ -161,15 +163,15 @@ const ContactUs = () => {
             {/* Cards */}
             <HeroContactUsCard
               CardIcon={FaPhone}
-              cardData={`00966552028136`}
+              cardData={`${information?.phone}`}
               cardTitle={t("global.whatsapp")}
-              url={`https://wa.me/00966552028136`}
+              url={`https://wa.me/${information?.phone}`}
             />
             <HeroContactUsCard
               CardIcon={LuMail}
-              cardData={`info@qrhealth.sa`}
+              cardData={`${information?.email}`}
               cardTitle={t("global.email")}
-              url={`mailto:info@qrhealth.sa`}
+              url={`mailto:${information?.email}`}
             />
           </div>
         </div>

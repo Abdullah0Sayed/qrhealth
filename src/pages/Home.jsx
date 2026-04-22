@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaGooglePlay } from "react-icons/fa6";
+import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa6";
 import { Link, useParams } from "react-router-dom";
 import Container from "../components/ui/Container";
 import { BsLungs, BsPlus } from "react-icons/bs";
@@ -15,10 +15,13 @@ import AccordionItem from "../components/ui/pages/home/AccordionItem";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import PageTitle from "../components/ui/PageTitle";
 import HreflangTags from "../components/seo/HreflangTags";
+import useSpecializations from "../hooks/specializations/useSpecializations";
 
 const Home = () => {
   const { t } = useTranslation("global");
   const { doctors } = useDoctors();
+  const { specializations, specializationLoading, specializationError } =
+    useSpecializations();
   const { blogs } = useBlogs();
   const { lang } = useParams();
   // const [images, setImages] = useState({});
@@ -84,15 +87,21 @@ const Home = () => {
         >
           <Link
             className={` px-8 py-2 bg-fifth-color text-white flex flex-row items-center gap-2 rounded text-sm justify-center`}
+            to={
+              "https://play.google.com/store/apps/details?id=com.qrdigitalhealth.qrdigitalhealth&pcampaignid=web_share"
+            }
+            target="_blank"
           >
             {t("global.download_app_from_google_play")}
             <FaGooglePlay />
           </Link>
           <Link
             className={` px-8 py-2 bg-fifth-color text-white flex flex-row items-center gap-2 rounded text-sm justify-center`}
+            to={"https://apps.apple.com/sa/app/qr-digital-health/id6754563872"}
+            target="_blank"
           >
             {t("global.download_app_from_app_store")}
-            <FaGooglePlay />
+            <FaAppStoreIos />
           </Link>
         </div>
       </div>
@@ -106,7 +115,34 @@ const Home = () => {
           <div
             className={`w-full flex flex-row flex-wrap gap-4 justify-center items-center`}
           >
-            <div
+            {!specializationLoading &&
+              specializations?.map((specialize, index) => {
+                const translation = specialize?.translations?.find(
+                  (e) => e.locale === lang,
+                );
+                return (
+                  <div
+                    className={`w-64 h-64 flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-100 shadow-md hover:border hover:scale-105 bg-white hover:border-fifth-color text-fifth-color transition-all duration-300 ease-in-out`}
+                    key={index}
+                  >
+                    <div
+                      className={`w-24 h-24 rounded-2xl flex items-center justify-center overflow-hidden`}
+                    >
+                      <img
+                        src={specialize?.image}
+                        alt={`specialize-${index}-icon`}
+                        className={`w-full object-cover`}
+                      />
+                    </div>
+                    {/* <BsLungs className={`text-8xl`} /> */}
+                    <p className={`text-2xl`}>
+                      {translation?.title}
+                      {/* {t("pages.services.list_titles.internal_medicine")} */}
+                    </p>
+                  </div>
+                );
+              })}
+            {/* <div
               className={`w-64 h-48 grow flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-100 shadow-md hover:border-none bg-white hover:bg-footer-color text-fifth-color hover:text-white transition-all duration-300 ease-in-out`}
             >
               <BsLungs className={`text-8xl`} />
@@ -137,7 +173,7 @@ const Home = () => {
               <p className={`text-2xl`}>
                 {t("pages.services.list_titles.palliative_care")}
               </p>
-            </div>
+            </div> */}
           </div>
         </Container>
       </div>
@@ -290,7 +326,7 @@ const Home = () => {
                   <Link
                     key={blog.id}
                     to={`blogs/${blog.id}`}
-                    className={`blog-card grow p-4 flex flex-col gap-4 border border-gray-200`}
+                    className={`blog-card w-96 h-96 p-4 flex flex-col gap-4 border border-gray-200`}
                   >
                     <div
                       className={`card-image rounded-2xl overflow-hidden w-full h-64`}

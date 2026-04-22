@@ -16,7 +16,7 @@ const HeroContactUsCard = ({ cardTitle, url, cardData, CardIcon }) => {
         className={`flex flex-col gap-2 items-center justify-center text-white`}
       >
         <span className={`text-xl`}>{cardTitle}</span>
-        <span>{cardData}</span>
+        <span dir="ltr">{cardData}</span>
       </div>
     </Link>
   );

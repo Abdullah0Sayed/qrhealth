@@ -9,6 +9,7 @@ import Container from "./Container";
 import { useDispatch, useSelector } from "react-redux";
 import { setWebLang } from "../../toolkit/features/lang/languageSlice";
 import { useChangeLanguage } from "../../hooks/lang/useChangeLanguage";
+import useSetting from "../../hooks/setting/useSetting";
 
 const Header = () => {
   const { t } = useTranslation("global");
@@ -16,6 +17,7 @@ const Header = () => {
   const { lang } = useParams();
   const [isOpenSideBar, setIsOpenSideBar] = useState(false);
   const navigate = useNavigate();
+  const { loading, error, information } = useSetting();
 
   // Header Scroll
   const [isScrolled, setIsScrolled] = useState(false);
@@ -65,20 +67,23 @@ const Header = () => {
                 <p className={`flex items-center gap-1 text-sm font-medium`}>
                   <IoMdMail />
                   <span className={`text-text-main-color font-normal`}>
-                    info@qrhealth.sa
+                    {loading ? "" : information?.email}
                   </span>
                 </p>
               </Link>
 
               <Link
-                to={`tel:6658914556`}
+                to={`tel:${information?.phone}`}
                 target="_blank"
                 className={`text-header-icon-color`}
               >
                 <p className={`flex items-center gap-1 text-sm font-medium`}>
                   <FaPhoneFlip />
-                  <span className={`text-text-main-color font-normal`}>
-                    6658914556
+                  <span
+                    className={`text-text-main-color font-normal`}
+                    dir="ltr"
+                  >
+                    {loading ? "" : information?.phone}
                   </span>
                 </p>
               </Link>
@@ -87,14 +92,14 @@ const Header = () => {
             {/* Social */}
             <div className={`flex flex-row gap-2 items-center`}>
               <Link
-                to={`https://www.linkedin.com/company/qrhealth/`}
+                to={information?.linkedIn}
                 target="_blank"
                 className={`p-1 hover:bg-primary-color/40 rounded-full flex items-center justify-center`}
               >
                 <FaLinkedin className={`text-fifth-color`} />
               </Link>
               <Link
-                to={`https://www.instagram.com/qrhealth/`}
+                to={information?.instagram}
                 target="_blank"
                 className={`p-1 hover:bg-primary-color/40 rounded-full flex items-center justify-center`}
               >

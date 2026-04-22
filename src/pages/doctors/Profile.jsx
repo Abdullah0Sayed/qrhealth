@@ -140,7 +140,7 @@ const Profile = () => {
                   {t("pages.doctors.profile.about_doctor") +
                     " " +
                     `${
-                      +lang === "ar"
+                      lang === "ar"
                         ? doctor?.name
                         : doctor?.name_en || doctor?.name
                     }`}

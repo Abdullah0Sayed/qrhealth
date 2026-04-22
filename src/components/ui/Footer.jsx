@@ -1,12 +1,13 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
-import { FooterLinks } from "../../utils/FooterLinks";
 import Container from "./Container";
+import useFooterLinks from "../../utils/useFooterLinks";
 
 const Footer = () => {
   const { t } = useTranslation("global");
   const { lang } = useParams();
+  const { FooterLinks } = useFooterLinks();
   return (
     <div
       id={`footer`}
@@ -30,14 +31,17 @@ const Footer = () => {
                     <Link
                       key={i}
                       to={`/${lang}/${childrenGroup.path[lang]}`}
-                      className={`text-white text-base`}
+                      className={`text-white text-base hover:text-fourth-color transition-all duration-200`}
                     >
                       {t(childrenGroup.title)}
                     </Link>
                   ) : childrenGroup.content ? (
                     <div key={i}>{childrenGroup.content}</div>
                   ) : (
-                    <span key={i} className={`text-white text-base`}>
+                    <span
+                      key={i}
+                      className={`text-white text-base hover:text-fourth-color transition-all duration-200 cursor-default`}
+                    >
                       {t(childrenGroup.title)}
                     </span>
                   ),
