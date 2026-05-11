@@ -2,11 +2,12 @@ import { MdWhatsapp } from "react-icons/md";
 import { IoMailOutline } from "react-icons/io5";
 
 import { Link, useParams } from "react-router-dom";
-import { FaInstagram, FaLinkedin } from "react-icons/fa6";
+import { FaAppStore, FaInstagram, FaLinkedin } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
 import useSetting from "../hooks/setting/useSetting";
 import { useEffect } from "react";
 import useSpecializations from "../hooks/specializations/useSpecializations";
+import { FaGooglePay } from "react-icons/fa";
 
 export default function useFooterLinks() {
   const { t } = useTranslation("global");
@@ -84,17 +85,27 @@ export default function useFooterLinks() {
       children: [
         {
           content: (
-            <Link
-              className={`flex flex-row gap-2 items-center text-base text-white hover:text-fourth-color transition-all duration-200`}
-              to={
-                "https://play.google.com/store/apps/details?id=com.qrdigitalhealth.qrdigitalhealth&pcampaignid=web_share"
-              }
-              target="_blank"
-            >
-              <span className={``}>
+            <div className={`flex flex-col gap-2`}>
+              {/* <span className={`text-white font-bol`}>
                 {t("footer.links.request_our_services.download_app")}
-              </span>
-            </Link>
+              </span> */}
+              <div className={`flex flex-row gap-2 items-center`}>
+                <Link
+                  className={`flex justify-center items-center text-base  w-8 h-8 rounded-full bg-white text-btn-color hover:text-fourth-color transition-all duration-200`}
+                  to={`https://play.google.com/store/apps/details?id=com.qrdigitalhealth.qrdigitalhealth&pcampaignid=web_share`}
+                  target="_blank"
+                >
+                  <FaGooglePay />
+                </Link>
+                <Link
+                  className={`flex justify-center items-center text-base  w-8 h-8 rounded-full bg-white text-btn-color hover:text-fourth-color transition-all duration-200`}
+                  to={`https://apps.apple.com/sa/app/qr-digital-health/id6754563872`}
+                  target="_blank"
+                >
+                  <FaAppStore />
+                </Link>
+              </div>
+            </div>
           ),
         },
       ],

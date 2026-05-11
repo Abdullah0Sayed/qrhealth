@@ -220,17 +220,26 @@ const Header = () => {
       {/* Sidebar */}
       {isOpenSideBar && (
         <div
-          className={`fixed inset-0 bg-black/80 z-[999]`}
+          className={`fixed inset-0 bg-black/80 z-999`}
           onClick={() => setIsOpenSideBar(false)}
         >
           <div
             className={`absolute ${
               lang === "en" ? "right-0" : "left-0"
-            } h-full bg-[#15558d] flex flex-col gap-4 z-[1000] w-72 transition-all duration-500`}
+            } h-full bg-[#15558d] flex flex-col gap-4 z-1000 w-72 transition-all duration-500`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close */}
-            <div className={`w-full flex justify-end items-center p-2`}>
+            <div
+              className={`w-full flex justify-between items-center px-2 py-4`}
+            >
+              <div className={`logo-container w-20 overflow-hidden`}>
+                <img
+                  src={`/uploads/qrHealthFooterLogo.png`}
+                  alt={`qr-health-logo`}
+                  className={`w-full h-full object-cover`}
+                />
+              </div>
               <div
                 className={`text-white cursor-pointer`}
                 onClick={() => setIsOpenSideBar(false)}
@@ -244,11 +253,13 @@ const Header = () => {
               {AppLinks.map((link, index) => (
                 <NavLink
                   key={index}
-                  to={link.path}
+                  to={
+                    link.path[lang] ? `/${lang}/${link.path[lang]}` : `/${lang}`
+                  }
                   end
                   onClick={() => setIsOpenSideBar(false)}
                   className={({ isActive }) =>
-                    `${isActive ? "bg-[#06aed4]" : ""} text-white px-5 py-4 border-b border-[#06aed4]`
+                    `${isActive ? "bg-[#ffffff] text-fifth-color" : "text-white"}  px-5 py-3 `
                   }
                 >
                   {t(link.title)}
@@ -257,7 +268,7 @@ const Header = () => {
             </div>
 
             {/* Buttons */}
-            <div className={`mt-auto p-4 flex flex-col gap-2`}>
+            <div className={`w-full mt-auto p-4 flex flex-col gap-2`}>
               <Link
                 to={`https://sso.qrhealth.sa/ar/doctor/login`}
                 target="_blank"
