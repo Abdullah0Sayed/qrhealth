@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import NotFoundResource from "../components/ui/NotFoundResource";
 import Home from "./Home";
 import AboutUs from "./AboutUs";
-import Services from "./Services";
+import Services from "./Specializations";
 import ContactUs from "./ContactUs";
 import Blog from "./Blog/Blog";
 import Doctors from "./doctors/Doctors";

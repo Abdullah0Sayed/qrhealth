@@ -54,12 +54,18 @@ const Doctors = () => {
                     className={`object-cover w-full h-full`}
                   />
                 </div>
-                <div className={`w-full flex flex-row gap-2 flex-wrap flex-1`}>
-                  <span
-                    className={`px-2 py-0.5 rounded bg-doctor-card-span-color text-white text-sm`}
-                  >
-                    {doctor.category.translation.title}
-                  </span>
+                <div
+                  className={`w-full flex flex-row items-center gap-2 flex-wrap flex-1`}
+                >
+                  {doctor?.categories?.map((category) => {
+                    return (
+                      <span
+                        className={`px-2 py-0.5 rounded bg-doctor-card-span-color text-white text-sm`}
+                      >
+                        {category?.translation.title}
+                      </span>
+                    );
+                  })}
                 </div>
                 <div className={`flex text-wrap flex-wrap w-full `}>
                   <span className={`text-2xl font-bold text-black/80`}>

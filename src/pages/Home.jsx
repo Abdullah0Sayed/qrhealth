@@ -3,65 +3,66 @@ import { useTranslation } from "react-i18next";
 import { FaAppStoreIos, FaGooglePlay } from "react-icons/fa6";
 import { Link, useParams } from "react-router-dom";
 import Container from "../components/ui/Container";
-import { BsLungs, BsPlus } from "react-icons/bs";
-import { MdOutlineFamilyRestroom } from "react-icons/md";
-import { MdOutlineElderlyWoman } from "react-icons/md";
-import { RiHeartPulseFill } from "react-icons/ri";
 import useDoctors from "../hooks/doctors/useDoctors";
 import useBlogs from "../hooks/blog/useBlogs";
-import { getFeaturedImage } from "../utils/getWordpressImage";
 import { faqList } from "../utils/FaqList";
 import AccordionItem from "../components/ui/pages/home/AccordionItem";
 import { FaHandHoldingHeart } from "react-icons/fa";
 import PageTitle from "../components/ui/PageTitle";
 import HreflangTags from "../components/seo/HreflangTags";
 import useSpecializations from "../hooks/specializations/useSpecializations";
+import SpecializationCard from "../components/ui/pages/specializations/SpecializationCard";
+import useServices from "../hooks/services/useServices";
+import ServiceCard from "../components/ui/pages/services/ServiceCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import Loading from "../components/ui/Loading";
 
 const Home = () => {
   const { t } = useTranslation("global");
   const { doctors } = useDoctors();
   const { specializations, specializationLoading, specializationError } =
     useSpecializations();
+  const {
+    services,
+    loading: servicesLoading,
+    error: servicesError,
+  } = useServices();
   const { blogs } = useBlogs();
   const { lang } = useParams();
-  // const [images, setImages] = useState({});
-  const [patientCounter, setPatientCounter] = useState(95);
+  // const [patientCounter, setPatientCounter] = useState(95);
   const [activeAccordIndex, setActiveAccordIndex] = useState(null);
+
   const handleToggle = (index) => {
     setActiveAccordIndex((prev) => (prev === index ? null : index));
   };
 
   // useEffect(() => {
-  //   blogs.forEach(async (blog) => {
-  //     const url = await getFeaturedImage(blog);
-  //     setImages((prev) => ({ ...prev, [blog.id]: url }));
-  //   });
-  // }, [blogs]);
+  //   let start = 0;
+  //   const end = 96;
+  //   const duration = 2000;
+  //   const increment = end / (duration / 16);
 
-  useEffect(() => {
-    let start = 0;
-    let end = 96;
-    let duration = 2000;
-    const increment = 96 / (duration / 16);
+  //   const timer = setInterval(() => {
+  //     start += increment;
+  //     if (start >= end) {
+  //       setPatientCounter(end);
+  //       clearInterval(timer);
+  //     } else {
+  //       setPatientCounter(Math.floor(start));
+  //     }
+  //   }, 16);
 
-    const timer = setInterval(() => {
-      start += increment;
-
-      if (start >= end) {
-        setPatientCounter(end);
-        clearInterval(timer);
-      } else {
-        setPatientCounter(Math.floor(start));
-      }
-    }, 16);
-
-    return () => clearInterval(timer);
-  }, []);
+  //   return () => clearInterval(timer);
+  // }, []);
 
   return (
     <div className={`w-full flex flex-col gap-8`}>
       <PageTitle
-        pageName={t("app_name") + " | " + t("pages.home.title")}
+        pageName={`${t("app_name")} | ${t("pages.home.title")}`}
         metaContentDescription={t("pages.home.meta_description")}
       />
       <HreflangTags path="" lang={lang} />
@@ -86,19 +87,19 @@ const Home = () => {
           className={`w-full flex flex-row flex-wrap gap-2 items-center justify-center p-2`}
         >
           <Link
-            className={` px-8 py-2 bg-fifth-color text-white flex flex-row items-center gap-2 rounded text-sm justify-center`}
-            to={
-              "https://play.google.com/store/apps/details?id=com.qrdigitalhealth.qrdigitalhealth&pcampaignid=web_share"
-            }
+            className={`px-8 py-2 bg-fifth-color text-white flex flex-row items-center gap-2 rounded text-sm justify-center`}
+            to={`https://play.google.com/store/apps/details?id=com.qrdigitalhealth.qrdigitalhealth&pcampaignid=web_share`}
             target="_blank"
+            rel="noreferrer"
           >
             {t("global.download_app_from_google_play")}
             <FaGooglePlay />
           </Link>
           <Link
-            className={` px-8 py-2 bg-fifth-color text-white flex flex-row items-center gap-2 rounded text-sm justify-center`}
-            to={"https://apps.apple.com/sa/app/qr-digital-health/id6754563872"}
+            className={`px-8 py-2 bg-fifth-color text-white flex flex-row items-center gap-2 rounded text-sm justify-center`}
+            to={`https://apps.apple.com/sa/app/qr-digital-health/id6754563872`}
             target="_blank"
+            rel="noreferrer"
           >
             {t("global.download_app_from_app_store")}
             <FaAppStoreIos />
@@ -106,75 +107,67 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Specialists */}
+      {/* Specializations */}
       <div className={`w-full`}>
-        <Container className={`flex flex-col gap-4`}>
+        <Container className={`flex flex-col gap-6`}>
           <div className={`w-full flex justify-center items-center`}>
             <p className={`text-3xl`}>{t("pages.home.specialists.title")}</p>
           </div>
-          <div
-            className={`w-full flex flex-row flex-wrap gap-4 justify-center items-center`}
-          >
-            {!specializationLoading &&
-              specializations?.map((specialize, index) => {
-                const translation = specialize?.translations?.find(
-                  (e) => e.locale === lang,
-                );
-                return (
-                  <div
-                    className={`w-64 h-64 flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-100 shadow-md hover:border hover:scale-105 bg-white hover:border-fifth-color text-fifth-color transition-all duration-300 ease-in-out`}
-                    key={index}
-                  >
-                    <div
-                      className={`w-24 h-24 rounded-2xl flex items-center justify-center overflow-hidden`}
-                    >
-                      <img
-                        src={specialize?.image}
-                        alt={`specialize-${index}-icon`}
-                        className={`w-full object-cover`}
+
+          {servicesLoading ? (
+            <Loading />
+          ) : servicesError ? (
+            <p className={`text-sm text-red-500 text-center w-full`}>
+              {t("global.error_loading_specializations")}
+            </p>
+          ) : (
+            <div
+              className={`specializations-swiper-wrapper w-full relative px-10 h-full`}
+            >
+              <Swiper
+                spaceBetween={16}
+                loop={true}
+                grabCursor={true}
+                breakpoints={{
+                  0: { slidesPerView: 1 },
+                  480: { slidesPerView: 2 },
+                  768: { slidesPerView: 3 },
+                  1024: { slidesPerView: 4 },
+                }}
+                modules={[Autoplay, Pagination]}
+                pagination={{
+                  clickable: true,
+                  el: ".spec-swiper-pagination",
+                }}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                className={`w-full pb-10`}
+              >
+                {specializations?.map((specialize) => {
+                  const translation = specialize?.translations?.find(
+                    (e) => e.locale === lang,
+                  );
+                  return (
+                    <SwiperSlide key={specialize?.id} className={`h-auto`}>
+                      <SpecializationCard
+                        specialize={specialize}
+                        translation={translation}
+                        id={specialize?.id}
                       />
-                    </div>
-                    {/* <BsLungs className={`text-8xl`} /> */}
-                    <p className={`text-2xl`}>
-                      {translation?.title}
-                      {/* {t("pages.services.list_titles.internal_medicine")} */}
-                    </p>
-                  </div>
-                );
-              })}
-            {/* <div
-              className={`w-64 h-48 grow flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-100 shadow-md hover:border-none bg-white hover:bg-footer-color text-fifth-color hover:text-white transition-all duration-300 ease-in-out`}
-            >
-              <BsLungs className={`text-8xl`} />
-              <p className={`text-2xl`}>
-                {t("pages.services.list_titles.internal_medicine")}
-              </p>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+
+              {/* Custom Pagination */}
+              <div
+                className={`spec-swiper-pagination w-full flex justify-center items-center gap-1 mt-2`}
+              />
             </div>
-            <div
-              className={`w-64 h-48 grow flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-100 shadow-md hover:border-none bg-white hover:bg-footer-color text-fifth-color hover:text-white transition-all duration-300 ease-in-out`}
-            >
-              <MdOutlineFamilyRestroom className={`text-8xl`} />
-              <p className={`text-2xl`}>
-                {t("pages.services.list_titles.family_medicine")}
-              </p>
-            </div>
-            <div
-              className={`w-64 h-48 grow flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-100 shadow-md hover:border-none bg-white hover:bg-footer-color text-fifth-color hover:text-white transition-all duration-300 ease-in-out`}
-            >
-              <MdOutlineElderlyWoman className={`text-8xl`} />
-              <p className={`text-2xl`}>
-                {t("pages.services.list_titles.geriatrics")}
-              </p>
-            </div>
-            <div
-              className={`w-64 h-48 grow flex flex-col items-center justify-center gap-2 rounded-2xl border border-gray-100 shadow-md hover:border-none bg-white hover:bg-footer-color text-fifth-color hover:text-white transition-all duration-300 ease-in-out`}
-            >
-              <RiHeartPulseFill className={`text-8xl`} />
-              <p className={`text-2xl`}>
-                {t("pages.services.list_titles.palliative_care")}
-              </p>
-            </div> */}
-          </div>
+          )}
         </Container>
       </div>
 
@@ -205,22 +198,26 @@ const Home = () => {
                         src={
                           doctor.image
                             ? doctor.image
-                            : "/uploads/noImageFounded.webp"
+                            : `/uploads/noImageFounded.webp`
                         }
                         alt={`${doctor.name}-image`}
                         className={`object-cover w-full h-full`}
                       />
                     </div>
                     <div
-                      className={`w-full flex flex-row gap-2 flex-wrap flex-1`}
+                      className={`w-full flex flex-row items-center gap-2 flex-wrap flex-1`}
                     >
-                      <span
-                        className={`px-2 py-0.5 rounded bg-doctor-card-span-color text-white text-sm`}
-                      >
-                        {doctor.category.translation.title}
-                      </span>
+                      {doctor?.categories?.map((category) => {
+                        return (
+                          <span
+                            className={`px-2 py-0.5 rounded bg-doctor-card-span-color text-white text-sm`}
+                          >
+                            {category?.translation.title}
+                          </span>
+                        );
+                      })}
                     </div>
-                    <div className={`flex text-wrap flex-wrap w-full `}>
+                    <div className={`flex text-wrap flex-wrap w-full`}>
                       <span className={`text-2xl font-bold text-black/80`}>
                         {`${t("global.doctor_title")} ${lang === "ar" ? doctor.name : doctor?.name_en || doctor?.name}`}
                       </span>
@@ -228,7 +225,6 @@ const Home = () => {
                     <div className={`w-full grow-0`}>
                       <span
                         className={`bg-fifth-color transition-all duration-300 ease-in-out hover:bg-footer-color text-white px-2 py-0.5 text-sm rounded-md`}
-                        to={`${doctor.id}`}
                       >
                         {t("pages.doctors.show_doctor_details")}
                       </span>
@@ -238,7 +234,7 @@ const Home = () => {
             </div>
             {doctors.length !== 0 && (
               <Link
-                to={"doctors"}
+                to={`doctors`}
                 className={`px-4 py-2 rounded text-fifth-color hover:text-white transition-all duration-300 ease-in-out hover:bg-fifth-color hover:border-none border border-primary-color text-sm flex justify-center items-center`}
               >
                 {t("global.load_all")}
@@ -252,7 +248,6 @@ const Home = () => {
       <div className={`w-full`}>
         <Container>
           <div className={`flex flex-col gap-8`}>
-            {/* Heading */}
             <div className={`flex flex-col items-center justify-center gap-4`}>
               <p className={`text-xl text-primary-color`}>
                 {t("pages.home.faqs.title")}
@@ -264,11 +259,9 @@ const Home = () => {
                 {t("pages.home.faqs.description")}
               </p>
             </div>
-            {/* Faqs And Image */}
             <div
-              className={`w-full flex lg:flex-row flex-col  gap-4 justify-center p-4`}
+              className={`w-full flex lg:flex-row flex-col gap-4 justify-center p-4`}
             >
-              {/* Image */}
               <div
                 className={`relative w-full flex items-center justify-center`}
               >
@@ -279,28 +272,25 @@ const Home = () => {
                     className={`w-full h-full object-cover transition-all duration-500 ease-in-out`}
                   />
                 </div>
-                <div
-                  className={`w-64 h-20 rounded-2xl absolute bottom-0 right-0  lg:-translate-x-40 -translate-x-20 lg:-translate-y-40 -translate-y-4 bg-white text-fifth-color shadow flex flex-row gap-4 items-center justify-center`}
+                {/* <div
+                  className={`w-64 h-20 rounded-2xl absolute bottom-0 right-0 lg:-translate-x-40 -translate-x-20 lg:-translate-y-40 -translate-y-4 bg-white text-fifth-color shadow flex flex-row gap-4 items-center justify-center`}
                 >
                   <div
                     className={`flex flex-col text-black items-center justify-center gap-1`}
                   >
-                    <span className={`font-semibold text-2xl`}>
-                      {`+${patientCounter}K`}
-                    </span>
+                    <span
+                      className={`font-semibold text-2xl`}
+                    >{`+${patientCounter}K`}</span>
                     <span>{t("pages.home.happy_patients")}</span>
                   </div>
                   <FaHandHoldingHeart className={`text-4xl`} />
-                </div>
+                </div> */}
               </div>
-
-              {/* Faq List */}
               <div className={`w-full flex flex-col gap-4 items-center`}>
-                {/* Faq According */}
                 {faqList.map((faq, index) => (
                   <AccordionItem
                     key={faq.id}
-                    question={faq.question} // بدون t
+                    question={faq.question}
                     answer={faq.answer}
                     hint={faq.hint}
                     list={faq.list}
@@ -321,7 +311,7 @@ const Home = () => {
           <div className={`w-full p-4 grid lg:grid-cols-3 grid-cols-1 gap-4`}>
             {Array.isArray(blogs) &&
               blogs.slice(0, 3).map((blog) => {
-                const imageUrl = blog?.image || "/uploads/noImageFounded.webp";
+                const imageUrl = blog?.image || `/uploads/noImageFounded.webp`;
                 return (
                   <Link
                     key={blog.id}
@@ -337,13 +327,11 @@ const Home = () => {
                         className={`object-cover w-full h-full transition-all duration-500 ease-in-out`}
                       />
                     </div>
-
                     <div className={`flex text-wrap flex-wrap max-w-2xs`}>
                       <span className={`text-xl text-black/80`}>
                         {blog?.translation?.title}
                       </span>
                     </div>
-
                     <div className={`w-full grow-0`}>
                       <span
                         className={`bg-fifth-color transition-all duration-300 ease-in-out hover:bg-footer-color text-white px-4 py-1.5 text-sm rounded-md`}
@@ -358,7 +346,7 @@ const Home = () => {
           {blogs.length !== 0 && (
             <div className={`w-full flex justify-center items-center`}>
               <Link
-                to={"blogs"}
+                to={`blogs`}
                 className={`px-4 py-2 rounded text-fifth-color hover:text-white transition-all duration-300 ease-in-out hover:bg-fifth-color hover:border-none border border-primary-color text-sm flex justify-center items-center`}
               >
                 {t("global.load_all")}

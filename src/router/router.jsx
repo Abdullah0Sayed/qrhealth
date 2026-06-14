@@ -12,6 +12,10 @@ import PageResolver from "../pages/PageResolver";
 const Home = lazy(() => import("../pages/Home"));
 const AboutUs = lazy(() => import("../pages/AboutUs"));
 const ContactUs = lazy(() => import("../pages/ContactUs"));
+const Specializations = lazy(() => import("../pages/Specializations"));
+const SpecializationDetails = lazy(
+  () => import("../pages/Specializations/Details"),
+);
 const Services = lazy(() => import("../pages/Services"));
 const PrivacyPolicy = lazy(() => import("../pages/setting/PrivacyPolicy"));
 const TermsOfUse = lazy(() => import("../pages/setting/TermsOfUse"));
@@ -60,6 +64,14 @@ export const router = createBrowserRouter([
       {
         path: "contact-us",
         element: withSuspense(ContactUs),
+      },
+      {
+        path: "specializations",
+        element: withSuspense(Specializations),
+      },
+      {
+        path: "specializations/:id/details",
+        element: withSuspense(SpecializationDetails),
       },
       {
         path: "services",

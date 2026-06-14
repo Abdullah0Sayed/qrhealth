@@ -92,16 +92,16 @@ const Profile = () => {
           <div>{t("global.not_found_file")}</div>
         ),
     },
-    {
-      title: t("pages.doctors.profile.links.age_group"),
-      content: (
-        <div>
-          {doctor?.age
-            ? t("pages.doctors.profile.calc_age", { age: doctor?.age })
-            : t("global.not_found_file")}
-        </div>
-      ),
-    },
+    // {
+    //   title: t("pages.doctors.profile.links.age_group"),
+    //   content: (
+    //     <div>
+    //       {doctor?.age
+    //         ? t("pages.doctors.profile.calc_age", { age: doctor?.age })
+    //         : t("global.not_found_file")}
+    //     </div>
+    //   ),
+    // },
   ];
 
   if (loading) {

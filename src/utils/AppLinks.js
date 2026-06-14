@@ -16,6 +16,14 @@ export const AppLinks = [
     },
   },
   {
+    key: "specializations",
+    title: "navbar.specializations",
+    path: {
+      ar: "specializations",
+      en: "specializations",
+    },
+  },
+  {
     key: "services",
     title: "navbar.services",
     path: {
@@ -23,6 +31,7 @@ export const AppLinks = [
       en: "services",
     },
   },
+
   {
     key: "blogs",
     title: "navbar.blog",

@@ -126,3 +126,27 @@
 .animate-slideDown {
   animation: slideDown 0.3s ease forwards;
 }
+
+/* Swiper */
+
+/* Specializations Swiper — pagination dots */
+.spec-swiper-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #d1d5db; /* gray-300 */
+  opacity: 1;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+}
+
+.spec-swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--color-fifth-color);  /* replace with your actual fifth-color CSS var or hex */
+  width: 20px;
+  border-radius: 1rem;
+}
+
+/* Remove default Swiper arrow buttons so custom ones take over */
+.specializations-swiper-wrapper .swiper-button-next,
+.specializations-swiper-wrapper .swiper-button-prev {
+  display: none;
+}

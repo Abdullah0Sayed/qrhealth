@@ -24,9 +24,15 @@
             "en": "English"
         },
         "doctor_title": "د / ",
+        "doctor_experience": "خبرة عملية {{years}} سنوات",
         "loading": "جاري تحميل البيانات...",
         "download_app_from_google_play": "حمل التطبيق من Google Play",
-        "download_app_from_app_store": "حمل التطبيق من App Store"
+        "download_app_from_app_store": "حمل التطبيق من App Store",
+        "read_more": "قراءة المزيد",
+        "read_less": "عرض أقل",
+        "error_loading_specializations": "خطأ من الخادم | فشل تحميل التخصصات",
+        "back_to_previous_page": "العودة للصفحة السابقة",
+        "error_loading_category_details": "تعذر تحميل بيانات التخصص"
     },
     "pages": {
         "home": {
@@ -169,6 +175,35 @@
                 "home_tests": "الفحوصات المنزلية وتفسير نتائج التحاليل"
             }
         },
+        "specializations": {
+            "title": "التخصصات",
+            "profile": {
+                "show_details": "عرض التفاصيل",
+                "banner": {
+                    "title": "{{specialization_title}}",
+                    "description": "{{specialization_description}}"
+                },
+                "symptoms": {
+                    "title": "الأعراض"
+                },
+                "doctors": {
+                    "title": "أطباء متخصصون"
+                }
+            },
+            "meta_description": "تصفح قائمة التخصصات الطبية المتاحة في QR Health واختر أفضل الرعاية الطبية المتخصصة لاحتياجاتك.",
+            "banner": {
+                "title": "تخصصات طبية متنوعة",
+                "description": "اكتشف مجموعة من التخصصات الطبية المتاحة عبر QR Health واحصل على رعاية طبية موثوقة في أي وقت ومن أي مكان."
+            },
+            "list_titles": {
+                "health_packages": "الباقات الصحية",
+                "internal_medicine": "طب الباطنة",
+                "family_medicine": "طب الأسرة",
+                "geriatrics": "طب كبار السن",
+                "palliative_care": "الطب التلطيفي",
+                "home_tests": "الفحوصات المنزلية وتفسير نتائج التحاليل"
+            }
+        },
         "blog": {
             "title": "المدونات",
             "meta_description": "اقرأ أحدث المقالات الطبية والنصائح الصحية من خبراء QR Health لتحسين جودة حياتك.",
@@ -283,6 +318,7 @@
         "about_us": "من نحن",
         "doctors": "الأطباء",
         "services": "الخدمات",
+        "specializations": "التخصصات",
         "blog": "المدونة",
         "contact_us": "تواصل معنا",
         "btns": {
