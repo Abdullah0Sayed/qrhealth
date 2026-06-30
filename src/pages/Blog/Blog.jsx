@@ -24,6 +24,7 @@ const Blog = () => {
         title={t("pages.blog.banner.title")}
         description={t("pages.blog.banner.description")}
         enableBannerBgColor={true}
+        customStyle={true}
       />
 
       {/* Blogs */}

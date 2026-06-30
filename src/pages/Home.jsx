@@ -69,7 +69,7 @@ const Home = () => {
 
       {/* Banner */}
       <div
-        className={`w-full flex flex-col gap-4 items-center justify-center h-home-banner-height bg-fifth-color`}
+        className={`w-full flex flex-col gap-4 items-center justify-center h-full py-4 lg:py-0 lg:h-home-banner-height bg-fifth-color`}
         style={{
           backgroundImage: 'url("/uploads/banner.webp")',
           backgroundPosition: "center",
@@ -77,6 +77,22 @@ const Home = () => {
           backgroundRepeat: "no-repeat",
         }}
       >
+        <div
+          className={`w-fit group rounded-xl p-4 bg-fifth-color  flex flex-col gap-2 items-center justify-center`}
+        >
+          <div
+            className={`w-40 h-40 bg-white group-hover:-translate-y-2 transition-all duration-400 ease-in group-hover:border-fifth-color shadow border border-gray-200 rounded-xl aspect-square flex items-center justify-center overflow-hidden`}
+          >
+            <img
+              src={`/uploads/moh_gov_logo.png`}
+              alt={`وزارة الصحة السعودية`}
+              className={`object-contain w-full`}
+            />
+          </div>
+          <p className={`text-sm font-bold text-white text-center `}>
+            {t("pages.home.banner.moh_license")}
+          </p>
+        </div>
         <p className={`text-3xl font-bold text-fifth-color text-center`}>
           {t("pages.home.banner.title")}
         </p>

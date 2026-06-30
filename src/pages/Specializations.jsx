@@ -29,6 +29,7 @@ const Specializations = () => {
         title={t("pages.specializations.banner.title")}
         description={t("pages.specializations.banner.description")}
         enableBannerBgColor={true}
+        customStyle={true}
       />
 
       {/* Cards */}

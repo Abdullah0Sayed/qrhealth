@@ -37,11 +37,12 @@
     "pages": {
         "home": {
             "title": "Home",
-            "meta_description": "QR Digital Health provides smart and fast digital healthcare with trusted medical consultations and integrated services available anytime and anywhere.",
+            "meta_description": "QR Health provides smart and fast digital healthcare with trusted medical consultations and integrated services available anytime and anywhere.",
             "happy_patients": "Happy Patients",
             "banner": {
                 "title": "Smarter, Faster, and Closer Healthcare",
-                "description": "With QR Digital Health, you can access trusted medical consultations and integrated digital healthcare services easily, anytime and anywhere."
+                "description": "With QR Health, you can access trusted medical consultations and integrated digital healthcare services easily, anytime and anywhere.",
+                "moh_license": "Licensed by the Ministry of Health"
             },
             "specialists": {
                 "title": "Specializations"
@@ -89,7 +90,7 @@
                         "answer": "Absolutely. Your data is encrypted and securely stored according to Saudi Ministry of Health regulations and standards. Privacy and confidentiality are our top priorities."
                     },
                     "q7": {
-                        "question": "What other services does QR Digital Health provide?",
+                        "question": "What other services does QR Health provide?",
                         "answer": "In addition to medical consultations, we offer:",
                         "list": {
                             "1": "Comprehensive health packages.",
@@ -117,7 +118,7 @@
             "meta_description": "Learn about QR Health, our vision and mission in providing modern digital healthcare focused on patients and service quality.",
             "banner": {
                 "title": "We Are Redefining Digital Healthcare",
-                "description": "At QR Digital Health, we combine technology and medical expertise to deliver a smart, easy, and secure healthcare experience for everyone."
+                "description": "At QR Health, we combine technology and medical expertise to deliver a smart, easy, and secure healthcare experience for everyone."
             },
             "hero_section": {
                 "title": "Cure Digital Clinic",
@@ -246,7 +247,7 @@
         "links": {
             "company": {
                 "title": "Company",
-                "about_us": "About QR Digital Health",
+                "about_us": "About QR Health",
                 "contact_us": "Contact Us",
                 "blogs": "Blog"
             },

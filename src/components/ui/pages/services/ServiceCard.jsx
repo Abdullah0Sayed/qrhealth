@@ -11,9 +11,9 @@ const ServiceCard = ({ serviceTitle, description, serviceImagePath }) => {
 
   return (
     <div
-      className={`service-card h-full w-full flex flex-col border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out`}
+      className={`service-card w-full min-h-fit h-full flex flex-col border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-in-out`}
     >
-      <div className={`card-image h-48 w-full overflow-hidden flex-shrink-0`}>
+      <div className={`card-image h-48 w-full overflow-hidden shrink-0`}>
         <img
           src={serviceImagePath}
           alt={serviceTitle ? `${serviceTitle} service` : `service image`}

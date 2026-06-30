@@ -38,12 +38,13 @@ const Footer = () => {
                   ) : childrenGroup.content ? (
                     <div key={i}>{childrenGroup.content}</div>
                   ) : (
-                    <span
+                    <Link
                       key={i}
-                      className={`text-white text-base hover:text-fourth-color transition-all duration-200 cursor-default`}
+                      to={`/${lang}/specializations/${childrenGroup?.id}/details`}
+                      className={`text-white cursor-pointer text-base hover:text-fourth-color transition-all duration-200 cursor-default`}
                     >
                       {t(childrenGroup.title)}
-                    </span>
+                    </Link>
                   ),
                 )}
               </div>

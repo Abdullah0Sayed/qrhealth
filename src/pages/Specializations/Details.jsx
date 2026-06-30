@@ -60,6 +60,7 @@ const Details = () => {
           specialization_description: category?.translation?.description,
         })}
         enableBannerBgColor={true}
+        customStyle={true}
       />
 
       {/* Container */}

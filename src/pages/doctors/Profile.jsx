@@ -44,54 +44,54 @@ const Profile = () => {
         <div>{lang === "ar" ? doctor?.bio : doctor?.bio_en || doctor?.bio}</div>
       ),
     },
-    {
-      title: t("pages.doctors.profile.links.areas_of_expertise"),
-      content: doctor?.category ? (
-        <div>{doctor?.category?.translation?.title}</div>
-      ) : (
-        <div>{t("global.not_found_file")}</div>
-      ),
-    },
-    {
-      title: t("pages.doctors.profile.links.academic_qualifications"),
-      content:
-        doctor?.bachelor_certificate_file ||
-        doctor?.specialization_certificate_file ? (
-          <div className={`flex flex-row items-center gap-2`}>
-            {doctor?.bachelor_certificate_file && (
-              <div className={`flex flex-row items-center gap-2`}>
-                <button
-                  className={`px-4 py-2 cursor-pointer bg-primary-color text-white rounded-2xl flex items-center justify-center gap-2`}
-                  onClick={() => {
-                    window.open(doctor?.bachelor_certificate_file, "_blank");
-                  }}
-                >
-                  <BsFileEarmarkPdf />
-                  {t("global.bachelor_certificate_file")}
-                </button>
-              </div>
-            )}
-            {doctor?.specialization_certificate_file && (
-              <div className={`flex flex-row items-center gap-2`}>
-                <button
-                  className={`px-4 py-2 cursor-pointer bg-primary-color text-white rounded-2xl flex items-center justify-center gap-2`}
-                  onClick={() => {
-                    window.open(
-                      doctor?.specialization_certificate_file,
-                      "_blank",
-                    );
-                  }}
-                >
-                  <BsFileEarmarkPdf />
-                  {t("global.specialization_certificate_file")}
-                </button>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div>{t("global.not_found_file")}</div>
-        ),
-    },
+    // {
+    //   title: t("pages.doctors.profile.links.areas_of_expertise"),
+    //   content: doctor?.category ? (
+    //     <div>{doctor?.category?.translation?.title}</div>
+    //   ) : (
+    //     <div>{t("global.not_found_file")}</div>
+    //   ),
+    // },
+    // {
+    //   title: t("pages.doctors.profile.links.academic_qualifications"),
+    //   content:
+    //     doctor?.bachelor_certificate_file ||
+    //     doctor?.specialization_certificate_file ? (
+    //       <div className={`flex flex-row items-center gap-2`}>
+    //         {doctor?.bachelor_certificate_file && (
+    //           <div className={`flex flex-row items-center gap-2`}>
+    //             <button
+    //               className={`px-4 py-2 cursor-pointer bg-primary-color text-white rounded-2xl flex items-center justify-center gap-2`}
+    //               onClick={() => {
+    //                 window.open(doctor?.bachelor_certificate_file, "_blank");
+    //               }}
+    //             >
+    //               <BsFileEarmarkPdf />
+    //               {t("global.bachelor_certificate_file")}
+    //             </button>
+    //           </div>
+    //         )}
+    //         {doctor?.specialization_certificate_file && (
+    //           <div className={`flex flex-row items-center gap-2`}>
+    //             <button
+    //               className={`px-4 py-2 cursor-pointer bg-primary-color text-white rounded-2xl flex items-center justify-center gap-2`}
+    //               onClick={() => {
+    //                 window.open(
+    //                   doctor?.specialization_certificate_file,
+    //                   "_blank",
+    //                 );
+    //               }}
+    //             >
+    //               <BsFileEarmarkPdf />
+    //               {t("global.specialization_certificate_file")}
+    //             </button>
+    //           </div>
+    //         )}
+    //       </div>
+    //     ) : (
+    //       <div>{t("global.not_found_file")}</div>
+    //     ),
+    // },
     // {
     //   title: t("pages.doctors.profile.links.age_group"),
     //   content: (

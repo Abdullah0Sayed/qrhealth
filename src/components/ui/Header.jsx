@@ -46,7 +46,7 @@ const Header = () => {
     <>
       {/* Header */}
       <div
-        className={`w-full flex flex-col flex-1 transition-all duration-300 ${
+        className={`w-full flex flex-col flex-1 transition-all duration-300 border-b border-b-gray-200 ${
           isScrolled
             ? "fixed top-0 z-50 bg-white shadow-md animate-slideDown"
             : "relative"

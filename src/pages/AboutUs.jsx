@@ -25,6 +25,7 @@ const AboutUs = () => {
         title={t("pages.about_us.banner.title")}
         description={t("pages.about_us.banner.description")}
         enableBannerBgColor={true}
+        customStyle={true}
       />
 
       {/* Section */}

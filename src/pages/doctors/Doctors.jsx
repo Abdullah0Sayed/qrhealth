@@ -29,6 +29,7 @@ const Doctors = () => {
         title={t("pages.doctors.banner.title")}
         description={t("pages.doctors.banner.description")}
         enableBannerBgColor={true}
+        customStyle={true}
       />
 
       {/* Doctors */}

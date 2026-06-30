@@ -27,12 +27,13 @@ const Services = () => {
         title={t("pages.services.banner.title")}
         description={t("pages.services.banner.description")}
         enableBannerBgColor={true}
+        customStyle={true}
       />
 
       {/* Cards */}
       <Container>
         <div
-          className={`w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4`}
+          className={`w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-between`}
         >
           {loading ? (
             <Loading />
@@ -44,7 +45,13 @@ const Services = () => {
             services?.map((service) => (
               <ServiceCard
                 key={service.id}
-                serviceImagePath={service?.image}
+                serviceImagePath={
+                  lang == "en"
+                    ? service?.image_en !== null || service?.image_en === ""
+                      ? service?.image_en
+                      : service?.image
+                    : service?.image
+                }
                 serviceTitle={service?.translation?.title ?? ""}
                 description={service?.translation?.description ?? ""}
               />

@@ -56,6 +56,7 @@ export default function useFooterLinks() {
                 specialize?.translations?.[0];
 
               return {
+                id: specialize?.id,
                 title: translation?.title || "",
               };
             })

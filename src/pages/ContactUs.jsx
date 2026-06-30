@@ -136,6 +136,7 @@ const ContactUs = () => {
         title={t("pages.contact_us.banner.title")}
         description={t("pages.contact_us.banner.description")}
         enableBannerBgColor={true}
+        customStyle={true}
       />
 
       {/* Contact Hero Section */}
@@ -157,22 +158,24 @@ const ContactUs = () => {
             </div>
           </div>
           {/* Hero Content Cards */}
-          <div
-            className={`w-full flex flex-row flex-wrap items-center justify-center gap-4`}
-          >
-            {/* Cards */}
-            <HeroContactUsCard
-              CardIcon={FaPhone}
-              cardData={`${information?.phone}`}
-              cardTitle={t("global.whatsapp")}
-              url={`https://wa.me/${information?.phone}`}
-            />
-            <HeroContactUsCard
-              CardIcon={LuMail}
-              cardData={`${information?.email}`}
-              cardTitle={t("global.email")}
-              url={`mailto:${information?.email}`}
-            />
+          <div className={`container mx-auto `}>
+            <div
+              className={`w-full flex flex-row flex-wrap items-center justify-center gap-4`}
+            >
+              {/* Cards */}
+              <HeroContactUsCard
+                CardIcon={FaPhone}
+                cardData={`${information?.phone}`}
+                cardTitle={t("global.whatsapp")}
+                url={`https://wa.me/${information?.phone}`}
+              />
+              <HeroContactUsCard
+                CardIcon={LuMail}
+                cardData={`${information?.email}`}
+                cardTitle={t("global.email")}
+                url={`mailto:${information?.email}`}
+              />
+            </div>
           </div>
         </div>
         {/* </Container> */}
