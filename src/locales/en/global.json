@@ -42,7 +42,8 @@
             "banner": {
                 "title": "Smarter, Faster, and Closer Healthcare",
                 "description": "With QR Health, you can access trusted medical consultations and integrated digital healthcare services easily, anytime and anywhere.",
-                "moh_license": "Licensed by the Ministry of Health"
+                "moh_license": "Licensed by the Ministry of Health",
+                "license_no": "License Number"
             },
             "specialists": {
                 "title": "Specializations"

@@ -92,6 +92,12 @@ const Home = () => {
           <p className={`text-sm font-bold text-white text-center `}>
             {t("pages.home.banner.moh_license")}
           </p>
+          <p
+            className={`text-sm font-bold text-white text-center flex items-center gap-1`}
+          >
+            <span>{t("pages.home.banner.license_no")} : </span>
+            <span>4400088745</span>
+          </p>
         </div>
         <p className={`text-3xl font-bold text-fifth-color text-center`}>
           {t("pages.home.banner.title")}
